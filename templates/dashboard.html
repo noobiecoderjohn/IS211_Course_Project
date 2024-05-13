@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome to Johnny's Book Catalogue!</h2>
+    <h3>Your Books Owned:</h3>
+    <ul>
+        {% for book in books %}
+        <li>{{ book.title }} by {{ book.author }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Please enter your ISBN below.</h3>
+    <form action="/add_book" method="post">
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn"><br><br>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

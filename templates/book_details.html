@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+</head>
+<body>
+    <h2>Book Details</h2>
+    <h3>Title: </h3>
+    <p>Author: </p>
+    <p>Page Count: </p>
+    <p>Average Rating: </p>
+    <form action="/delete_book/{{ book.id }}" method="post">
+        <input type="submit" value="Delete">
+    </form>
+</body>
+</html>
