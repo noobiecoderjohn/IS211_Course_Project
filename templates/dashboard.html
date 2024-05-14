@@ -2,22 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 </head>
 <body>
-    <h2>Welcome to Johnny's Book Catalogue!</h2>
+    <h1>Welcome!</h1>
     <h3>Your Books Owned:</h3>
     <ul>
         {% for book in books %}
         <li>{{ book.title }} by {{ book.author }}</li>
         {% endfor %}
-    </ul>
-    <h3>Please enter your ISBN below.</h3>
-    <form action="/add_book" method="post">
+    </ul>    <h3>Please enter your ISBN below.</h3>
+
+    <form action="{{ url_for('addbook') }}" method="post">
         <label for="isbn">ISBN:</label>
-        <input type="text" id="isbn" name="isbn"><br><br>
-        <input type="submit" value="Search">
+        <input type="text" id="isbn" name="isbn">
+        <br>
+
+        <br>
+        <button type="submit">Search</button>
     </form>
+    <ul>
+        {% for book in books %}
+            <li>
+                <img src="{{ book[6] }}" alt="Thumbnail" style="width:50px;height:75px;">
+                <strong>{{ book[2] }}</strong> by {{ book[3] }} ({{ book[4] }} pages, Rating: {{ book[5] }})
+                <form action="{{ url_for('delete_book', book_id=book[0]) }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}">Logout</a>
 </body>
 </html>
